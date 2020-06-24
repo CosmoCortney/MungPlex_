@@ -216,16 +216,15 @@ void MainWindow::refresh_regionList()
 
     unsigned long long addressSpace;
     if(hook.get_is_wowx64()) { addressSpace = 0x100000000; } //Where to stop depending on architecture
-    else{ addressSpace = 0x7FFFFFFF0000; }
+    else{ addressSpace = 0x7FFFFF00000; } //0x7FFFFFF00000
 
-    for(unsigned long long i = 0; (buffer.RegionSize + reinterpret_cast<unsigned long long>(buffer.BaseAddress)) < addressSpace; i++)
+    for(unsigned long long i = 0; (buffer.RegionSize + reinterpret_cast<unsigned long long>(buffer.BaseAddress)) < addressSpace; ++i)
     {
         VirtualQueryEx(hProcess_temp, reinterpret_cast<LPVOID>(rangeIterator), &buffer, sizeof(buffer));
         MemRegion temp_record(reinterpret_cast<unsigned long long>(buffer.BaseAddress), buffer.RegionSize, buffer.AllocationProtect, static_cast<int>(buffer.State), static_cast<int>(buffer.Type));
         memArr.push_back(temp_record);
         rangeIterator += buffer.RegionSize;
     }
-
 
     ui->tableWidget_memoryRegions->setRowCount(static_cast<int>(memArr.size()));
 
@@ -310,10 +309,8 @@ bool MainWindow::refresh_hook()
                 rangeMap.clear();
                 HANDLE asdf = OpenProcess(PROCESS_ALL_ACCESS, NULL, hook.getPid());
                 hook.setHandle(asdf);
-
                 ProcessSelect::getInstance().initialize(hook, memArr, targetProcess);
                 rangeMap = ProcessSelect::getInstance().getRangeMap();
-
                 return true;
             }
         }

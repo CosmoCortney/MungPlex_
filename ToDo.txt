@@ -1,0 +1,18 @@
+general:
+-   clear everything when re-hooking
+
+
+search:
+-   support for scanning all ranges at once
+-   implementation of undoing steps (rollbacks)
+-   implement searches for int24 (AnyInt), int96 (AnyInt), int128 (AnyInt), color codes, float, double, string (ASCII), string (ISO), string (UTF-8), string (UTF-16), string (UTF-32), string (unicode (all 16bit)), byte array
+-   set search accuracy for float, double, color codes, byte arrays
+
+MainWindow:
+
+pointer search:
+-   64bit searches
+
+
+
+

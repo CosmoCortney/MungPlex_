@@ -1,0 +1,61 @@
+gamecube/wii info
+address         size    typical value     description
+0x80000006	1	0               Disc Number (multidisc games)
+0x80000007	1	?               Disc Version
+0x80000008	1	?               Disc Streaming flag
+0x80000009	1	?               Disc Streaming buffer size
+0x80000018	4	0x5D1C9EA3      Disc layout magic (Wii)
+0x8000001C	4	0xC2339F3D	Disc layout magic (GC)
+0x80000020	4	0x0D15EA5E	Nintendo Standard Boot Code.
+0x80000024	4	0x00000001	Version (set by apploader)
+0x80000028	4	0x01800000	Memory Size (Physical) 24MB
+0x8000002C	4	0x00000023	Production Board Model
+0x80000030	4	0x00000000	Arena Low
+0x80000034	4	0x817FEC60	Arena High
+0x80000038	4	0x817FEC60	Start of FST (varies in all games)
+0x8000003C	4	0x00001394	Maximum FST Size (varies in all games)
+0x80000060	0x24	Debugger Hook	Hook is PPC assembler used by Debugger. If nothing is written to 0x60, SDK titles will write the 0x20 bytes of instructions automatically.
+0x800000EC	4	0x81800000	Dev Debugger Monitor Address (If present)
+0x800000F0	4	0x01800000	Simulated Memory Size
+0x800000F4	4	0x00000000	BI2
+0x800000F8	4	0x0E7BE2C0	Console Bus Speed
+0x800000FC	4	0x2B73A840	Console CPU Speed
+0x80001800	0x1800                  Unused Exception Vector area often used for loader stubs and reloaders as this area is never cleared or used.
+0x800030C8	8	?               Related to Nintendos dynamic linking system (REL). Pointers to two REL files, probably the first and last linked one.
+0x800030D8	4	0xffffffff	Seems to be always set to 0xffffffff by official NAND titles, including the system menu. This means the value carries over to disc titles.
+0x800030E4	4	?               __OSPADButton. Apploader puts button state of GCN port 4 at game start here for Gamecube NR disc support
+0x800030F0	4	0x00000000	DOL Execute Parameters
+0x80003100	4	?               Physical MEM1 size
+0x80003104	4	?               Simulated MEM1 size
+0x80003110	4	?               Heap pointer (end of usable memory by the game)
+0x80003118	4	?               Physical MEM2 size
+0x8000311C	4	?               Simulated MEM2 size
+0x80003130	8	0x933E0000, 0x93400000	IOS Heap Range
+0x80003138	4	0x00000011	Hollywood Version
+0x80003140	4	0x00090204	IOS version (090204 = IOS9, v2.4)
+0x80003144	4	0x00062507	IOS Build Date (62507 = 06/25/07 = June 25, 2007)
+0x80003158	4	0x0000FF16	GDDR Vendor Code
+0x8000315C	4	0xdeadbeef	During the boot process, 0x315c is first set to 0xdeadbeef by IOS in the boot_ppc syscall. The value is later partly overwritten by SDK titles.
+0x8000315D	1	0?              "Enable legacy DI" mode (0x80 = yes)
+0x8000315E	2	0x0113          "Devkit boot program version", written to by the system menu. The value carries over to disc games. 0x0113 appears to mean v1.13, which is the latest version of the boot program (found in System Menu 4.3).
+0x80003160	4	0x00000000	Init semaphore (1-2 main() waits for this to clear)
+0x80003164	4	0x00000000	GC (MIOS) mode flag?
+0x80003180	4	0x52535045	Game ID 'RSPE' Wii Sports ID. If these 4 bytes don't match the ID at 80000000, WC24 mode in games is disabled.
+0x80003184	2	0x80            Application type
+0x80003188	4	0x00351011	Minimum IOS version (2 bytes for the major version, 2 bytes for the title version)
+0x8000318C	4	0x00000000	Title Booted from NAND (Launch Code)
+0x80003190	4	0x00000000	Title Booted from NAND (Return Code)
+0x80003194	4	0x00000000	While reading a disc, the system menu reads the first partition table (0x20 bytes from 0x00040020) and stores a pointer to the data partition entry. When launching the disc game, it copies the partition type to 0x3194. The partition type for data partitions is 0, so typically this location always has 0.
+0x80003198	4       data partition offset	While reading a disc, the system menu reads the first partition table (0x20 bytes from 0x00040020) and stores a pointer to the data partition entry. When launching the disc game, it copies the partition offset to 0x3198.
+0x80003400	0x100                   NAND boot vector (Broadway initialization code from nandloader, entry point for NAND applications)
+0x80003F00	0x132c100 (~19.2MB)	Standard application executable area
+0x81330000	0x4d0000 (~4.8MB)	Loader executable area
+
+
+
+
+
+
+
+
+

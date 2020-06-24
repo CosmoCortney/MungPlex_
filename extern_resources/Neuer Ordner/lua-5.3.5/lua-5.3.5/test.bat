@@ -1,0 +1,2 @@
+g++ -Wl,-subsystem,windows -mthreads -o debug/MungPlex.exe @object_script.MungPlex.Debug  -LC:/Qt_Projects/MungPlex/extern_resources -llua53 -LD:/Qt/5.12.0/mingw73_64/lib D:/Qt/5.12.0/mingw73_64/lib/libQt5Widgetsd.a D:/Qt/5.12.0/mingw73_64/lib/libQt5Guid.a D:/Qt/5.12.0/mingw73_64/lib/libQt5Cored.a  -lmingw32 D:/Qt/5.12.0/mingw73_64/lib/libqtmaind.a -LC:/openssl/lib -LC:/Utils/my_sql/mysql-5.6.11-winx64/lib -LC:/Utils/postgresql/pgsql/lib -lshell32 -LD:/Qt/5.12.0/mingw73_64/lib D:/Qt/5.12.0/mingw73_64/lib/libQt5Cored.a 
+pause

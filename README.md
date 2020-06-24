@@ -3,7 +3,7 @@ MungPlex is a game hacking, cheating and reverse engineering tool for various em
 ## Usage
 
 ## Main Features
-![Main UI features](https://github.com/CosmoCortney/MungPlex/readme_files/ui01.png?raw=true)
+![Main UI features](https://github.com/CosmoCortney/MungPlex/tree/master/readme_files/ui01.png?raw=true)
 
 1. Connection section
    - 1.1 Select an emulator or PC game (by selecting "PC" from the dropbox). Note: Game and emulator are assumed to be running
@@ -24,7 +24,7 @@ MungPlex is a game hacking, cheating and reverse engineering tool for various em
 
 ## Search Tab
 
-![Search Tab](https://github.com/CosmoCortney/MungPlex/readme_files/ui02.png?raw=true)
+![Search Tab](https://github.com/CosmoCortney/MungPlex/tree/master/readme_files/ui02.png?raw=true)
 
 1. Range Options
    - Memory Range: Select the memory range you want to process
@@ -64,7 +64,7 @@ MungPlex is a game hacking, cheating and reverse engineering tool for various em
 
 ## Cheats Tab
 
-![Cheats Tab](https://github.com/CosmoCortney/MungPlex/readme_files/ui03.png?raw=true)
+![Cheats Tab](https://github.com/CosmoCortney/MungPlex/tree/master/readme_files/ui03.png?raw=true)
 
 - Open Cheats Dir: Open a directory with cheat files
   - GroupBox: Select whether you want to use cheats from the list or write down a text cheat yourself.

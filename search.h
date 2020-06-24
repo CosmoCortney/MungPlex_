@@ -12,7 +12,6 @@
 #include<QFile>
 #include<QDataStream>
 #include"dataconversion.h"
-#include"anyint.h"
 #include<functional>
 #include"settings.h"
 #include"operativearray.h"

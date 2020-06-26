@@ -215,7 +215,7 @@ void MainWindow::refresh_regionList()
     unsigned long long rangeIterator = 0;
 
     unsigned long long addressSpace;
-    if(hook.get_is_wowx64()) { addressSpace = 0x100000000; } //Where to stop depending on architecture
+    if(hook.get_is_wowx64()) { addressSpace = 0x7F000000; } //Where to stop depending on architecture
     else{ addressSpace = 0x7FFFFF00000; } //0x7FFFFFF00000
 
     for(unsigned long long i = 0; (buffer.RegionSize + reinterpret_cast<unsigned long long>(buffer.BaseAddress)) < addressSpace; ++i)

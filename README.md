@@ -120,7 +120,7 @@ Build step:
 1. Set build to 'Release'
 2. Click on 'Build' (the hammer icon)
 3. Go to the deployment folder where MungPlex.exe is located
-4. Create folders named 'css' (without ')
+4. Create folders named 'css', 'platforms' and 'styles' (without ')
 5. Put all theme .css files into the css folder
 6. Copy the following files from <your Qt installation>\<your Qt version>\mingw<version>_64\bin\
 	  - libgcc_s_seh-1.dll
@@ -130,8 +130,15 @@ Build step:
 	  - Qt5Gui.dll
 	  - Qt5Widgets.dll to the deployment folder
 7. Copy advapi32.dll from C:\Windows\System32\ into your deployment folder. If it's not found there take it from previous MungPlex releases, check SysWOW64 or download it from a trustworthy source
-8. Copy the 'platforms' folder from <your Qt installation>\<your Qt version>\mingw<version>_64\plugins\ to the deployment folder
-9. Copy the settings.json (without any settings being set) into the deplyment folder
-10. Delete all .o, .h and .cpp files from the deployment folder
-11. Update build revision in 'mainwindow.h' at line 3
-12. Test if MungPlex can be launched
+8. Copy the following files from <your Qt installation>\<your Qt version>\mingw<version>_64\bin\platforms
+	- qdirect2d.dll
+	- qminimal.dll
+	- qoffscreen.dll
+	- qwebgl.dll
+	- qwindows.dll into the 'platforms' folder of your deployment directory
+9. Copy the following files from <your Qt installation>\<your Qt version>\mingw<version>_64\bin\styles
+	- qwindowsvistastyle.dll into the 'styles' folder of your deployment directory
+10. Copy the settings.json (without any settings being set) into the deplyment folder
+11. Delete all .o, .h and .cpp files from the deployment folder
+12. Update build revision in 'mainwindow.h' at line 3
+13. Test if MungPlex can be launched

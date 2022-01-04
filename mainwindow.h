@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#define VER 1
+#define VER 2
 
 #include <QMainWindow>
 #include<windows.h>

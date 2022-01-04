@@ -228,7 +228,7 @@ int Cheats::readFromRAM(lua_State* L) //readFromRAM(TYPE, addr)
                 case INT16_: size = 2; break;
                 case INT24_: size = 3; break;
                 case FLOAT_: case INT32_: size = 4; break;
-                default: size = 4; break;
+                default: size = 8; break;
             }
 
             ReadProcessMemory(shook.getHandle(), reinterpret_cast<LPCVOID>((addr-srangeLayouts[i].get_virtualAddress())+srangeLayouts[i].get_address()), &val, size, nullptr);

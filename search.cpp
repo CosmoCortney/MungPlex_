@@ -7,6 +7,13 @@ Search::Search(Hook* hook)
     this->hook = hook;
 }
 
+void Search::cancel()
+{
+    iterations = 0;
+    firstSearchDone(true);
+    freeDumps();
+}
+
 void Search::writeFileToDisk(char* data, QIODevice* file, long long size)
 {
     if(!file->open(QIODevice::WriteOnly))

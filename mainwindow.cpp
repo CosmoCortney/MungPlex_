@@ -502,8 +502,7 @@ void MainWindow::on_pushButton_cancelSearch_clicked()
     ui->tableWidget_search->clear();
     ui->tableWidget_search->setHorizontalHeaderLabels(QStringList() << "Address" << "Current" << "Previous" << "Difference");
     ui->pushButton_cancelSearch->setEnabled(false);
-    search.firstSearchDone(true);
-    search.freeDumps();
+    search.cancel();
 }
 
 //pokes single value or all selected into memory

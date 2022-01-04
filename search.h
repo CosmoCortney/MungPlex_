@@ -122,6 +122,7 @@ public:
     void set_alignment(unsigned long long val) { this->alignmentSize = val; }
     void set_knownValue(unsigned long long val){ this->knownValue = val; }
     void set_known(bool x){ this->isKnown = x; }
+    void cancel();
     int getIterations(){ return this->iterations; }
 
     //limits the range of where to search for values

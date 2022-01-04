@@ -867,7 +867,7 @@ void MainWindow::on_pushButton_saveTxtCheat_clicked()
 
     if(!file.open(QFile::WriteOnly | QFile::Text)){ qDebug() << "could not save cheat"; return;  }
     QTextStream out (&file);
-    out.setCodec("UTF-8");
+    out.setEncoding(QStringConverter::Utf8);
     out << cheat;
     file.flush();
     file.close();
@@ -1051,7 +1051,7 @@ void MainWindow::on_listWidget_cheats_itemDoubleClicked(QListWidgetItem *item)
     QFile cheat(luaCheatsDir.path() + "/" + fileName);
     if(!cheat.open(QIODevice::ReadOnly)) { QMessageBox::warning(Q_NULLPTR, "Error opening cheat", cheat.errorString()); }
     QTextStream in(&cheat);
-    in.setCodec("UTF-8");
+    in.setEncoding(QStringConverter::Utf8);
     ui->plainTextEdit_luaCheat->setPlainText(in.readAll());
     cheat.close();
 }

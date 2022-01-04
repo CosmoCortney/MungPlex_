@@ -124,7 +124,7 @@ void ProcessSelect::initializeDolphin()
     {
         qDebug() << "WiiWare game detected";
         qDebug() << QString::number(wiiwareID, 16);
-        platform = wiiwareID & 0x000000FF;
+        platform = QChar(wiiwareID & 0x000000FF);
         gameType = 3;
         rangeMap.push_back(RangeLayout(mramAddress,  0x80000000, 0x1800000, "MEM1"));
         rangeMap.push_back(RangeLayout(exramAddress, 0x90000000, 0x4000000, "MEM2"));

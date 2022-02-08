@@ -629,7 +629,7 @@ void ProcessSelect::initializeDesmume()
         unsigned long long msize = processMemRegions->at(i).get_size();
         unsigned long long ramAddress = processMemRegions->at(i).get_address();
 
-        if(ramAddress > 0x141000000 && ramAddress < 0x200000000 && msize > 0x2000000 && msize < 0x10000000 && (processMemRegions->at(i).get_protectionVal() == PAGE_READWRITE || processMemRegions->at(i).get_protectionVal() == PAGE_EXECUTE_READWRITE || processMemRegions->at(i).get_protectionVal() == PAGE_EXECUTE_WRITECOPY))
+        if(ramAddress > 0x138000000 && ramAddress < 0x200000000 && msize > 0x2000000 && msize < 0x10000000 && (processMemRegions->at(i).get_protectionVal() == PAGE_READWRITE || processMemRegions->at(i).get_protectionVal() == PAGE_EXECUTE_READWRITE || processMemRegions->at(i).get_protectionVal() == PAGE_EXECUTE_WRITECOPY))
         {
             unsigned int* mapCopy = reinterpret_cast<unsigned int*>(malloc(msize));
             ReadProcessMemory(hook->getHandle(), reinterpret_cast<LPCVOID>(ramAddress), mapCopy, msize, nullptr);
@@ -649,7 +649,7 @@ void ProcessSelect::initializeDesmume()
             delete mapCopy;
         }
 
-        if(ramAddress > 0x141000000 && ramAddress < 0x200000000 && msize > 0x2000000 && msize < 0x10000000)
+        if(ramAddress > 0x138000000 && ramAddress < 0x200000000 && msize > 0x2000000 && msize < 0x10000000)
         {
             unsigned int* mapCopy = reinterpret_cast<unsigned int*>(malloc(msize));
 

@@ -260,7 +260,7 @@
          <x>10</x>
          <y>20</y>
          <width>341</width>
-         <height>93</height>
+         <height>99</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -394,7 +394,7 @@
          <x>10</x>
          <y>20</y>
          <width>251</width>
-         <height>45</height>
+         <height>49</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
@@ -741,7 +741,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Enable chache (slow)</string>
+             <string>Enable cache (slow)</string>
             </property>
            </widget>
           </item>
@@ -834,7 +834,7 @@ border-color: #000;*/</string>
         <x>381</x>
         <y>500</y>
         <width>261</width>
-        <height>60</height>
+        <height>63</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_5">
@@ -928,7 +928,7 @@ border-color: #000;*/</string>
         <x>15</x>
         <y>501</y>
         <width>351</width>
-        <height>48</height>
+        <height>49</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_6">
@@ -1115,7 +1115,7 @@ border-color: #000;*/</string>
        <rect>
         <x>4</x>
         <y>10</y>
-        <width>101</width>
+        <width>111</width>
         <height>161</height>
        </rect>
       </property>
@@ -1153,7 +1153,7 @@ border-color: #000;*/</string>
        <item>
         <widget class="QGroupBox" name="groupBox_7">
          <property name="title">
-          <string>GroupBox</string>
+          <string>Run cheats from</string>
          </property>
          <widget class="QRadioButton" name="radioButton_luaText">
           <property name="enabled">
@@ -1230,7 +1230,7 @@ border-color: #000;*/</string>
          <x>10</x>
          <y>20</y>
          <width>251</width>
-         <height>216</height>
+         <height>228</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -2072,10 +2072,10 @@ border-color: #000;*/</string>
     <attribute name="horizontalHeaderStretchLastSection">
      <bool>true</bool>
     </attribute>
-    <attribute name="verticalHeaderDefaultSectionSize">
+    <attribute name="verticalHeaderMinimumSectionSize">
      <number>25</number>
     </attribute>
-    <attribute name="verticalHeaderMinimumSectionSize">
+    <attribute name="verticalHeaderDefaultSectionSize">
      <number>25</number>
     </attribute>
     <attribute name="verticalHeaderStretchLastSection">

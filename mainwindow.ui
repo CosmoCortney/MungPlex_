@@ -369,7 +369,7 @@
         <item row="3" column="0" colspan="2">
          <widget class="QLabel" name="label_20">
           <property name="text">
-           <string>Range between Start and End shouldn't be greater than 0x10000000</string>
+           <string>Distance shouldn't be greater than 0x10000000</string>
           </property>
          </widget>
         </item>

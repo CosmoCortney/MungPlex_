@@ -299,6 +299,7 @@ bool MainWindow::refresh_hook()
         }
 
         //browses process list to find the target emulator
+        refresh_processList();
         for(unsigned long long i = 0; i < processList.size(); i++)
         {
             if(processList[i].get_processName() == currentProcess)

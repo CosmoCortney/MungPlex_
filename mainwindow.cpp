@@ -148,6 +148,7 @@ void MainWindow::on_pushButton_hook_clicked()
     }
     else
     {
+        refresh_processList();
         processListWND->setProcessList(processList);
         processListWND->show();
     }

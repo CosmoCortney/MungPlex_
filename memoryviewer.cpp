@@ -38,6 +38,8 @@ MemoryViewer::~MemoryViewer()
 
 void MemoryViewer::readMemory(char* addr)
 {
+    addr = reinterpret_cast<char*>((unsigned long long)addr & 0xFFFFFFFFFFFFFFF0);
+    currentOffsetFromBase &= 0xFFFFFFFFFFFFFFF0;
     virtualBaseAddress = rangeLayouts[selectedRange].get_virtualAddress();
     unsigned char tempVal;
     unsigned char* tempAddr;
@@ -51,7 +53,7 @@ void MemoryViewer::readMemory(char* addr)
         {
             tempVal = *((tempMemory+(col)+(row*16)));
             ui->tableWidget_memory->setItem(row, col, new QTableWidgetItem(QString::number(((tempVal)), 16).rightJustified(2, '0')));
-            tempAddr = reinterpret_cast<unsigned char*>(currentOffsetFromBase & 0xFFFFFFFFFFFFFFF0);
+            tempAddr = reinterpret_cast<unsigned char*>(currentOffsetFromBase);
             tempAddr += virtualBaseAddress + (row*16);
             rowHeaders << QString::number(reinterpret_cast<long long>(tempAddr), 16);
             //qDebug() << (unsigned int*)(tempMemory+(col*4)+(row*16));

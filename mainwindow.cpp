@@ -281,20 +281,20 @@ bool MainWindow::refresh_hook()
     {
         switch(targetProcess)   //Emulators are picked by their file name
         {
-            case VirtuaNES_: currentProcess = L"VirtuaNES.exe"; break;
-            case Project64_: currentProcess = L"Project64.exe"; break;
-            case Dolphin_: currentProcess = L"Dolphin.exe"; break;
-            case Cemu_: currentProcess = L"Cemu.exe"; break;
+            case VirtuaNES_: currentProcess = L"VirtuaNES"; break;
+            case Project64_: currentProcess = L"Project64"; break;
+            case Dolphin_: currentProcess = L"Dolphin"; break;
+            case Cemu_: currentProcess = L"Cemu"; break;
             case VBA_GB: case VBA_GBC: case VBA_GBA: currentProcess = L"VBA.exe";  qDebug() << "VBA selected"; break;
-            case DesMume_: currentProcess = L"DeSmuME.exe"; qDebug() << "DeSmuME selected"; break;
-            case PCSX2_: currentProcess = L"pcsx2.exe"; qDebug() << "PCSX2.exe selected"; break;
-            case EPSXE_: currentProcess = L"ePSXe.exe"; qDebug() << "ePSXe.exe selected"; break;
-            case RPCS3_: currentProcess = L"rpcs3.exe"; qDebug() << "rpcs3.exe selected"; break;
-            case FUSION_MM: case FUSION_GG: case FUSION_MD: case FUSION_CD: currentProcess = L"Fusion.exe";  qDebug() << "Fusion selected"; break;
-            case Yabause_: currentProcess = L"yabause.exe"; qDebug() << "yabause.exe selected"; break;
-            case nulldc_: currentProcess = L"nullDC.exe"; qDebug() << "nullDC.exe selected"; break;
-            case ppsspp_: currentProcess = L"PPSSPPWindows64.exe"; qDebug() << "PPSSPPWindows64.exe selected"; break;
-            case Citra_: currentProcess = L"citra-qt.exe"; qDebug() << "citra-qt.exe selected"; break;
+            case DesMume_: currentProcess = L"DeSmuME"; qDebug() << "DeSmuME selected"; break;
+            case PCSX2_: currentProcess = L"pcsx2"; qDebug() << "PCSX2.exe selected"; break;
+            case EPSXE_: currentProcess = L"ePSXe"; qDebug() << "ePSXe.exe selected"; break;
+            case RPCS3_: currentProcess = L"rpcs3"; qDebug() << "rpcs3.exe selected"; break;
+            case FUSION_MM: case FUSION_GG: case FUSION_MD: case FUSION_CD: currentProcess = L"Fusion";  qDebug() << "Fusion selected"; break;
+            case Yabause_: currentProcess = L"yabause"; qDebug() << "yabause.exe selected"; break;
+            case nulldc_: currentProcess = L"nullDC"; qDebug() << "nullDC.exe selected"; break;
+            case ppsspp_: currentProcess = L"PPSSPPWindows64"; qDebug() << "PPSSPPWindows64.exe selected"; break;
+            case Citra_: currentProcess = L"citra-qt"; qDebug() << "citra-qt.exe selected"; break;
             case PC_: currentProcess = ui->lineEdit_processName->text().toStdWString(); qDebug() << currentProcess << " selected"; break;
         default: return false;
         }
@@ -303,7 +303,10 @@ bool MainWindow::refresh_hook()
         refresh_processList();
         for(unsigned long long i = 0; i < processList.size(); i++)
         {
-            if(processList[i].get_processName() == currentProcess)
+            QString pName = QString::fromStdWString(processList[i].get_processName());
+            QString cName = QString::fromStdWString(currentProcess);
+
+            if(pName.contains(cName, Qt::CaseInsensitive))
             {
                 hook = Hook(processList[i].get_pid(), processList[i].get_handle(), reinterpret_cast<LPCSTR>(processList[i].get_processName().c_str()));
                 hook.set_is_wowx64(processList[i].get_is_wowx64());

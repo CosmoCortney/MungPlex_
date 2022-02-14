@@ -207,6 +207,7 @@ void MainWindow::refresh_regionList()
 {
     memArr.clear();
     ui->tableWidget_memoryRegions->removeRow(ui->tableWidget_processList->rowCount());
+    ui->tableWidget_modules->removeRow(ui->tableWidget_modules->rowCount());
 
     DWORD pid_temp = hook.getPid();
     HANDLE hProcess_temp = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid_temp);
@@ -239,6 +240,20 @@ void MainWindow::refresh_regionList()
         ui->tableWidget_memoryRegions->item(i, 1)->setFlags(ui->tableWidget_memoryRegions->item(i, 1)->flags() ^ Qt::ItemIsEditable);
         ui->tableWidget_memoryRegions->item(i, 2)->setFlags(ui->tableWidget_memoryRegions->item(i, 2)->flags() ^ Qt::ItemIsEditable);
         ui->tableWidget_memoryRegions->item(i, 3)->setFlags(ui->tableWidget_memoryRegions->item(i, 3)->flags() ^ Qt::ItemIsEditable);
+    }
+
+    ProcessInfo processInfo(pid_temp, targetProcessName.toStdWString());
+    std::vector<MODULE_PAIR> modules = processInfo.get_modulePairsInfo();
+
+    ui->tableWidget_modules->setRowCount(modules.size());
+
+    for(int i = 0; i < modules.size(); ++i)
+    {
+        ui->tableWidget_modules->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(modules[i].first)));
+        ui->tableWidget_modules->setItem(i, 1, new QTableWidgetItem(QString::number(modules[i].second, 16)));
+        ui->tableWidget_modules->item(i, 0)->setFlags(ui->tableWidget_modules->item(i, 0)->flags() ^ Qt::ItemIsEditable);
+        ui->tableWidget_modules->item(i, 1)->setFlags(ui->tableWidget_modules->item(i, 1)->flags() ^ Qt::ItemIsEditable);
+
     }
 }
 
@@ -717,6 +732,7 @@ void MainWindow::on_pushButton_executeCheats_clicked()
     ui->plainTextEdit_luaLog->clear();
     Cheats::getInstance().set_rangeLayouts(rangeMap);
     Cheats::getInstance().setHook(hook);
+    Cheats::getInstance().processSnapshot();
 
     if(ui->radioButton_luaText->isChecked())
     {
@@ -1047,6 +1063,7 @@ void MainWindow::setupProcessInfoTab(bool val)
 {
     ui->pushButton_refresh_regionList->setEnabled(val);
     ui->tableWidget_memoryRegions->setEnabled(val);
+    ui->tableWidget_modules->setEnabled(val);
 }
 
 //loads cheat's text into textEdit
@@ -1089,6 +1106,7 @@ void MainWindow::setProcessLineEdit(int index)
 
         ui->pushButton_open_MemViewer->setEnabled(true);
         ui->tableWidget_memoryRegions->setEnabled(true);
+        ui->tableWidget_modules->setEnabled(true);
         //ui->pushButton_refresh_regionList->setEnabled(true);
 
         //setupSearchTab(true);

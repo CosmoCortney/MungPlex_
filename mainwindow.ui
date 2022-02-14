@@ -141,7 +141,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -1648,7 +1648,7 @@ border-color: #000;*/</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>120</y>
+        <y>90</y>
         <width>121</width>
         <height>16</height>
        </rect>
@@ -1663,8 +1663,8 @@ border-color: #000;*/</string>
       </property>
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>110</y>
+        <x>230</x>
+        <y>50</y>
         <width>80</width>
         <height>22</height>
        </rect>
@@ -1710,32 +1710,16 @@ border-color: #000;*/</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_region_count">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>110</y>
-        <width>113</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QTableWidget" name="tableWidget_memoryRegions">
       <property name="enabled">
        <bool>false</bool>
       </property>
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>160</y>
-        <width>511</width>
-        <height>261</height>
+        <x>10</x>
+        <y>110</y>
+        <width>421</width>
+        <height>451</height>
        </rect>
       </property>
       <property name="dragDropOverwriteMode">
@@ -1747,6 +1731,9 @@ border-color: #000;*/</string>
       <property name="verticalScrollMode">
        <enum>QAbstractItemView::ScrollPerItem</enum>
       </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>80</number>
+      </attribute>
       <attribute name="horizontalHeaderStretchLastSection">
        <bool>true</bool>
       </attribute>
@@ -1762,7 +1749,7 @@ border-color: #000;*/</string>
       </column>
       <column>
        <property name="text">
-        <string>Is mapped</string>
+        <string>Mapped</string>
        </property>
       </column>
       <column>
@@ -1770,6 +1757,60 @@ border-color: #000;*/</string>
         <string>Protection</string>
        </property>
       </column>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_modules">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>110</y>
+        <width>291</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <property name="dragDropOverwriteMode">
+       <bool>false</bool>
+      </property>
+      <property name="textElideMode">
+       <enum>Qt::ElideLeft</enum>
+      </property>
+      <property name="verticalScrollMode">
+       <enum>QAbstractItemView::ScrollPerItem</enum>
+      </property>
+      <property name="columnCount">
+       <number>2</number>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>150</number>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Offset</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>90</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Module List</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_systemInfo">

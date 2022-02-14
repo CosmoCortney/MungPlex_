@@ -717,6 +717,7 @@ void MainWindow::on_pushButton_executeCheats_clicked()
     ui->plainTextEdit_luaLog->clear();
     Cheats::getInstance().set_rangeLayouts(rangeMap);
     Cheats::getInstance().setHook(hook);
+    Cheats::getInstance().processSnapshot();
 
     if(ui->radioButton_luaText->isChecked())
     {

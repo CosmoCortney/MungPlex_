@@ -34,6 +34,7 @@ private:
     inline static std::string sresult;
     inline static std::string logStr;
     inline static Hook shook;
+    inline static HANDLE snap;
     inline static std::vector<RangeLayout> srangeLayouts;
     inline static lua_State* L;
 
@@ -64,6 +65,7 @@ public:
     void setHook(Hook& h){ hook = h; }
     void set_rangeLayouts(std::vector<RangeLayout>& val){ rangeLayouts = val; }
     static std::string* getLogStr();
+    void processSnapshot();
 
 public slots:
     //slots to be called from the MainWindow class

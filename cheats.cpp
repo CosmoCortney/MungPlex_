@@ -1,5 +1,8 @@
 #include "cheats.h"
 #include "mainwindow.h"
+#include <locale>
+#include <codecvt>
+#define MODULE_PAIR std::pair<std::string, unsigned long long>
 
 /*This class provides functions to execute cheat codes as Lua scripts!
  * Some special functions and parameters are defined:
@@ -135,7 +138,32 @@ void Cheats::sendLuaCheat()
         lua_setglobal(L, name.c_str());
     }
 
+    //push module names and addresses
+    MODULEENTRY32 moduleEntry;
+    moduleEntry.dwSize = sizeof(moduleEntry);
+    std::vector<MODULE_PAIR> moduleTable;
 
+    if (Module32First(snap, &moduleEntry))
+    {
+        std::string moduleName;
+        unsigned long long moduleAddress = 0;
+        do
+        {
+            moduleName = std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(moduleEntry.szModule);
+            moduleAddress = (unsigned long long)moduleEntry.modBaseAddr;
+            moduleTable.push_back(MODULE_PAIR(moduleName, moduleAddress));
+        }
+        while (Module32Next(snap, &moduleEntry));
+    }
+
+    lua_createtable(L, 0, moduleTable.size());
+
+    for(int i = 0; i < moduleTable.size(); ++i)
+    {
+        lua_pushinteger(L, moduleTable[i].second);
+        lua_setfield(L, -2, moduleTable[i].first.c_str());
+    }
+    lua_setglobal(L, "Modules");
 }
 
 void Cheats::routine(lua_State* L)
@@ -354,4 +382,9 @@ int Cheats::clearLog(lua_State* L)
 {
     emit Cheats::getInstance().clear();
     return 1;
+}
+
+void Cheats::processSnapshot()
+{
+    snap = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, hook.getPid());
 }

@@ -740,7 +740,7 @@ void MainWindow::on_pushButton_executeCheats_clicked()
         std::string val = ui->plainTextEdit_luaCheat->toPlainText().toStdString();
         Cheats::getInstance().setCheat(val);
         Cheats::getInstance().sendLuaCheat();
-        cheatTimer->start(16);
+        cheatTimer->start(8);
     }
     else
     {
@@ -762,7 +762,7 @@ void MainWindow::on_pushButton_executeCheats_clicked()
 
         Cheats::getInstance().setupCheatList(selectedLuaCheats, luaCheatsDir);
         Cheats::getInstance().loadCheatsFromDisk();
-        cheatTimerList->start(16);
+        cheatTimerList->start(8);
     }
 
     ui->pushButton_terminateCheats->setEnabled(true);

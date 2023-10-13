@@ -1,4 +1,4 @@
-##Deprecated
+## Deprecated
 This version of MungPlex is deprecated. You can find [the new one here](https://github.com/CosmoCortney/MungPlex)
 
 MungPlex is a game hacking, cheating and reverse engineering tool for various emulators! Once a supported emulator has launched a game you can hook this tool to it in order to search for cheats, create cheats as Lua scripts, search for pointers, dump memory and much more!
